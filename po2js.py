@@ -46,7 +46,6 @@ for srcfile in args:
 	encoder = json.JSONEncoder()
 	
 	for part in encoder.iterencode(xlate_map):
-		sys.stdout.write("PART %s\n\n" % part)
 		if part.startswith('"function('):
 			dest.write(part[1:-1]);
 		else:

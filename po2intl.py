@@ -34,7 +34,7 @@ for srcfile in args:
 		if entry.obsolete:
 			continue
 			
-		if len(entry.msgstr) == 0:
+		if len(entry.msgstr) > 0:
 			text = entry.msgstr
 		else:
 			text = entry.msgid

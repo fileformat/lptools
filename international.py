@@ -3,14 +3,14 @@
 # encodes a string into "international" (all characters with some sort of accent mark)
 #
 
+import os
 import re
-
 
 #
 # initialize mapping from file
 #
 mapping = dict()
-f= open("international.properties", "r")
+f= open(os.path.join(os.path.dirname(__file__), "international.properties"), "r")
 for line in f:
 	line = line.strip()
 
@@ -34,8 +34,15 @@ f.close()
 def to_international_text(text):
 
 	result = ''
+	in_brace = False
 	for ch in text:
-		if ch in mapping:
+		if ch == '{':
+			in_brace = True
+			result += ch
+		elif ch == '}':
+			in_brace = False
+			result += ch
+		elif in_brace == False and ch in mapping:
 			result += mapping[ch]
 		else:
 			result += ch

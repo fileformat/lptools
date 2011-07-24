@@ -23,13 +23,14 @@ mv he.po iw.po
 
 mv iw.po he.po
 
+../bin/po2intl.py en.po
+mv en-intl.po zz.po
+
 for f in *.po
 do
-	echo "converting $f to properties"
-	../bin/po2prop.py --fuzzy $f
+	../bin/po2prop.py $f
 	mv `basename $f .po`.properties ../src/com/localeplanet/i18n/text/
-	echo "converting $f to json"
-	../bin/po2json.py --fuzzy $f
+	../bin/po2json.py $f
 	mv `basename $f .po`.json ../www/js/text/
 done
 

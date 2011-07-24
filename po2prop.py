@@ -56,8 +56,6 @@ def pescape_value(orig):
 	
 
 parser = optparse.OptionParser(usage="usage: %prog [options] pofile...")
-parser.add_option("--fuzzy", action="store_true", default=True, dest="fuzzy", help="flag translations as fuzzy (default)")
-parser.add_option("--no-fuzzy", action="store_false", dest="fuzzy", help="do NOT flag translations as fuzzy")
 parser.add_option("--quiet", action="store_false", default=True, dest="verbose", help="don't print status messages to stdout")
 
 (options, args) = parser.parse_args()
